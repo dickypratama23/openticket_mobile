@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:openticket_mobile/pages/home_page.dart';
 
 import '../components/_button.dart';
 import '../components/_icon.dart';
@@ -23,22 +24,33 @@ class _LoginPageState extends State<LoginPage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const CustomIcon(icon: Icons.send_rounded, size: 100, color: Color(0xffE7AB79)),
-                const SizedBox(height: 75),
-                Text(
-                  "OPENTICKET",
-                  style: GoogleFonts.bebasNeue(
+                CustomIcon(
+                    icon: Icons.send_rounded,
+                    size: 100,
+                    color: Color(0xffE7AB79)),
+                SizedBox(height: 75),
+                Text("OPENTICKET",
+                    style: GoogleFonts.bebasNeue(
                       fontSize: 52,
-                      color: const Color(0xffE7AB79),
-                  )
-                ),
-                const SizedBox(height: 50),
-                const CustomTextField(hintText: "Email"),
-                const SizedBox(height: 10),
-                const CustomTextField(hintText: "Password"),
-                const SizedBox(height: 10),
-                const CustomButton(text: "Log In", size: 18, colorButton: Color(0xffB25068), colorButtonText: Colors.white),
-                const SizedBox(height: 25),
+                      color: Color(0xffE7AB79),
+                    )),
+                SizedBox(height: 50),
+                CustomTextField(hintText: "Email"),
+                SizedBox(height: 10),
+                CustomTextField(hintText: "Password"),
+                SizedBox(height: 10),
+                CustomButton(
+                    text: "Log In",
+                    size: 18,
+                    colorButton: Color(0xffB25068),
+                    colorButtonText: Colors.white,
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => SecondRoute()));
+                    }),
+                SizedBox(height: 25),
               ],
             ),
           ),

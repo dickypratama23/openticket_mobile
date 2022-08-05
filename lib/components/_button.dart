@@ -1,33 +1,30 @@
-import 'package:flutter/material.dart';
+import 'dart:ui';
 
-import '../pages/home_page.dart';
+import 'package:flutter/material.dart';
 
 class CustomButton extends StatelessWidget {
   final String text;
   final double size;
   final Color colorButton;
   final Color colorButtonText;
+  final Function() onPressed;
 
   const CustomButton({
     required this.text,
     required this.size,
     required this.colorButton,
     required this.colorButtonText,
+    required this.onPressed,
   });
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 25),
+      padding: EdgeInsets.symmetric(horizontal: 25),
       child: MaterialButton(
         padding: const EdgeInsets.all(18),
         minWidth: double.infinity,
-        onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => const SecondRoute())
-          );
-        },
+        onPressed: onPressed,
         color: colorButton,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12),
