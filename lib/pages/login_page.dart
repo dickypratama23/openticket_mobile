@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:openticket_mobile/pages/home_page.dart';
 
-import '../components/_button.dart';
-import '../components/_icon.dart';
-import '../components/_text_field.dart';
+import '../widgets/_button.dart';
+import '../widgets/_icon.dart';
+import '../widgets/_text_field.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
