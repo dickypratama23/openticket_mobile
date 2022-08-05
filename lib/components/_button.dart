@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../pages/home_page.dart';
+
 class CustomButton extends StatelessWidget {
   final String text;
   final double size;
@@ -21,7 +23,10 @@ class CustomButton extends StatelessWidget {
         padding: const EdgeInsets.all(18),
         minWidth: double.infinity,
         onPressed: () {
-          showAlert(context);
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const SecondRoute())
+          );
         },
         color: colorButton,
         shape: RoundedRectangleBorder(
@@ -38,19 +43,4 @@ class CustomButton extends StatelessWidget {
       ),
     );
   }
-}
-
-showAlert(BuildContext context) {
-  AlertDialog alert = const AlertDialog(
-    title: Text("MyTitle"),
-    content: Text("Missing COntent"),
-    actions: null,
-  );
-
-  showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return alert;
-      }
-  );
 }
