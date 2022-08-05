@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import 'components/_button.dart';
-import 'components/_icon.dart';
-import 'components/_text_field.dart';
+import '../components/_button.dart';
+import '../components/_icon.dart';
+import '../components/_text_field.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
