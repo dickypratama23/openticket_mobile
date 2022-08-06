@@ -1,10 +1,12 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:openticket_mobile/pages/home_page.dart';
+import 'package:http/http.dart' as http;
 
-import '../widgets/_button.dart';
-import '../widgets/_icon.dart';
-import '../widgets/_text_field.dart';
+import 'package:openticket_mobile/widgets/_button.dart';
+import 'package:openticket_mobile/widgets/_icon.dart';
+import 'package:openticket_mobile/widgets/_text_field.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -14,6 +16,24 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  final _nik = TextEditingController();
+  final _password = TextEditingController();
+
+  Future<http.Response> _login() async {
+    var url = Uri.http('192.168.90.219:8001', 'api/v1/login');
+    final response = await http.post(url, body: {
+      'nik': _nik.text,
+      'password': _password.text
+    });
+
+    var result = json.decode(response.body);
+    if (result['message'] != 'Unauthorized') {
+      Navigator.pushReplacementNamed(context, '/HomePage');
+    }
+
+    return response;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,9 +55,9 @@ class _LoginPageState extends State<LoginPage> {
                       color: Color(0xffE7AB79),
                     )),
                 SizedBox(height: 50),
-                CustomTextField(hintText: "Email"),
+                CustomTextField(hintText: "Nomor Induk Karyawan", controller: _nik),
                 SizedBox(height: 10),
-                CustomTextField(hintText: "Password"),
+                CustomTextField(hintText: "Password", controller: _password),
                 SizedBox(height: 10),
                 CustomButton(
                     text: "Log In",
@@ -45,10 +65,7 @@ class _LoginPageState extends State<LoginPage> {
                     colorButton: Color(0xffB25068),
                     colorButtonText: Colors.white,
                     onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => SecondRoute()));
+                      _login();
                     }),
                 SizedBox(height: 25),
               ],

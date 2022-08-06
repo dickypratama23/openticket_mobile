@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:openticket_mobile/routes/routes.dart';
 import 'pages/login_page.dart';
 
 void main() {
@@ -13,6 +14,7 @@ class MyApp extends StatelessWidget {
       title: 'Openticket',
       debugShowCheckedModeBanner: false,
       home: LoginPage(),
+      routes: customRoutes
     );
   }
 }
