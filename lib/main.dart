@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:openticket_mobile/pages/main_page.dart';
 import 'package:openticket_mobile/routes/routes.dart';
 import 'pages/login_page.dart';
 
@@ -12,8 +14,18 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Openticket',
+      theme: ThemeData(
+        fontFamily: GoogleFonts.poppins().fontFamily,
+        textTheme: TextTheme(
+          bodyText1: TextStyle(),
+          bodyText2: TextStyle(),
+        ).apply(
+          bodyColor: Colors.white,
+          displayColor: Colors.white
+        )
+      ),
       debugShowCheckedModeBanner: false,
-      home: LoginPage(),
+      home: MainPage(),
       routes: customRoutes
     );
   }

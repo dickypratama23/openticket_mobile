@@ -1,27 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:openticket_mobile/widgets/_card.dart';
-import 'package:openticket_mobile/widgets/_category.dart';
-import 'package:openticket_mobile/widgets/_search.dart';
 
-import 'package:openticket_mobile/Models/tiket.dart';
-
-class Home extends StatefulWidget {
-  const Home({Key? key}) : super(key: key);
+class Profile extends StatefulWidget {
+  const Profile({Key? key}) : super(key: key);
 
   @override
-  State<Home> createState() => _HomeState();
+  State<Profile> createState() => _ProfileState();
 }
 
-class _HomeState extends State<Home> {
-
+class _ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Color(0xff4C3A51),
       appBar: AppBar(
         title: Text(
-          "HOME",
+          "PROFILE",
           style: TextStyle(
             letterSpacing: 4 / 10,
             fontSize: 18,
@@ -35,15 +28,8 @@ class _HomeState extends State<Home> {
         ],
       ),
       body: SafeArea(
-        bottom: false,
         child: Column(
           children: <Widget>[
-            Search(
-              onChanged: (value) {
-                print(value);
-              },
-            ),
-            CategotyList(),
             Expanded(
               child: Stack(
                 children: <Widget>[
@@ -57,22 +43,12 @@ class _HomeState extends State<Home> {
                       )
                     ),
                   ),
-                  ListView.builder(
-                    itemCount: tikets.length,
-                    itemBuilder: (context, index) =>  CustomCard(
-                      itemIndex: index,
-                      tiket: tikets[index],
-                      press: () {
-                        print(123);
-                      },
-                    ),
-                  )
                 ],
               )
             )
           ],
         ),
-      ),
+      )
     );
   }
 }
