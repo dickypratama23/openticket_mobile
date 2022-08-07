@@ -37,7 +37,7 @@ class _MainPageState extends State<MainPage> {
       floatingActionButton: Visibility(
         visible: !keyboardIsOpen,
         child: FloatingActionButton(
-        backgroundColor: Color(0xff4C3A51),
+        backgroundColor: Color(0xffB25068),
         foregroundColor: Colors.white,
         child: Icon(Icons.add),
         onPressed: () {
